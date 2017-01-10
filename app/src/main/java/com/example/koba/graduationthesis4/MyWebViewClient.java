@@ -39,6 +39,7 @@ class MyWebViewClient extends WebViewClient{
             param.url = url;
             param.webView = view;
 
+
             //モバイルサイトの表示
             param.ua = view.getSettings().getUserAgentString();
 
