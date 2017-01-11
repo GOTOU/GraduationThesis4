@@ -62,6 +62,7 @@ class DownloadTask extends AsyncTask<Param, Integer, Param> {
     @Override
     protected Param doInBackground(Param... params) {
         Param param = params[0];
+        String str;
 
         try {
             // ここでJsoup使ってDOMの編集を行う
@@ -69,29 +70,17 @@ class DownloadTask extends AsyncTask<Param, Integer, Param> {
 
             Element body = document.select("body").first();
             Elements alls = body.getAllElements();
-            Log.d("Debug", "AllElements: "+ alls);
             Elements links = body.getElementsByTag("a");  //aタグを取得
             Elements googles = body.getElementsByTag("ins");
             Elements divs = body.getElementsByTag("div");
             Elements scripts = body.getElementsByTag("script");
             Elements zucks = body.getElementsByTag("img");
-            Elements elements = body.children();
 
             for (Element script : scripts){
-                String src = script.attr("src");
-
-
-                if (src.contains("nend")){
-                    script.remove();
-                }
-
-                if (src.contains("amoad")){
-                    script.remove();
-                }
-
-                if (src.contains("zucks")){
-                    script.remove();
-                }
+                str = script.data();
+ //               Log.d("Debug", "html: "+ str);
+                StringOperation stringOperation = new StringOperation();
+                String afterStr = stringOperation.removeAds(str);
 
             }
 
