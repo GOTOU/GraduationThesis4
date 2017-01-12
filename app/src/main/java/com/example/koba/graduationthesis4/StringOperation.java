@@ -1,6 +1,8 @@
 package com.example.koba.graduationthesis4;
 
 import android.util.Log;
+
+import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -15,16 +17,7 @@ public class StringOperation {  //jsoupのscriptタグの中身を受け取り�
 
     public String removeAds(String str){ //scriptタグの中身のjavascriptの文字列中にあるURLを抽出、広告と思わしきURLの削除もしくはreplace
 
-        final Pattern urlPattern = Pattern.compile("(http://|https://){1}[\\w\\.\\-/:\\#\\?\\=\\&\\;\\%\\~\\+]+", Pattern.CASE_INSENSITIVE);
-        Matcher matcher = urlPattern.matcher(str);
-
-
-        while (matcher.find()){
-            url = matcher.group();
-            Log.d("Debug", "url : "+url);
-        }
-
-        final String[] array = {
+        List<String> list = Arrays.asList(
                 "premium.2ch.net",
                 "microad.jp",
                 "nend.net",
@@ -61,21 +54,40 @@ public class StringOperation {  //jsoupのscriptタグの中身を受け取り�
                 "ad-stir.com",
                 "mtburn.com",
                 "astrsk.net",
-                "ghnosy.com"
+                "ghnosy.com",
+                "maist.jp",
+                "iogous.com",
+                "trax-ad.jp",
+                "4clvr.jp",
+                "formulas.jp",
+                "iand2ch.net",
+                "-ad.jp",
+                "prism.pandora.tv",
+                "adms-ad.com",
+                "ad.gunosy.com",
+                "adjust.com",
+                "adtdp.com",
+                "caprofitx.com",
+                "conv.gunosy.com",
+                "logs.gunosy.com",
+                "platform.gunosy.com",
+                "stimg.iand2ch.net",
+                "stimgc.iand2ch.net",
+                "blogsys.jp"
 
 
-        };
+        );
 
-
-        for (int i = 0; i < array.length; i++){
-            if(str.contains(array[i])){
- //               url.replace(url, " ");
-                break;
-            }
+        String result = str;
+        for (String item : list) {
+            final Pattern urlPattern = Pattern.compile("(http://|https://){1}[\\w\\.\\-/:\\#\\?\\=\\&\\;\\%\\~\\+]+", Pattern.CASE_INSENSITIVE);
+            Matcher matcher = urlPattern.matcher(result);
+            result = matcher.replaceAll("");
         }
 
 
-        return str;
+ //       Log.d("Debug", "result: "+result);
+        return result;
     }
 
 }

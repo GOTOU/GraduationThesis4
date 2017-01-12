@@ -77,10 +77,12 @@ class DownloadTask extends AsyncTask<Param, Integer, Param> {
             Elements zucks = body.getElementsByTag("img");
 
             for (Element script : scripts){
-                str = script.data();
- //               Log.d("Debug", "html: "+ str);
+                str = script.html();
+
                 StringOperation stringOperation = new StringOperation();
                 String afterStr = stringOperation.removeAds(str);
+                script.html(afterStr);
+                Log.d("Debug", "afterStr : "+script.html());
 
             }
 
