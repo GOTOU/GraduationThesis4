@@ -105,7 +105,7 @@ public class StringOperation {  //jsoupのscriptタグの中身を受け取り�
 */
 
         Log.d("Debug", "result: "+result);
-        return str;
+        return result;
     }
 
 }
