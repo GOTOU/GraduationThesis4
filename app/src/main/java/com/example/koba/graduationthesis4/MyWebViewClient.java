@@ -75,6 +75,7 @@ class DownloadTask extends AsyncTask<Param, Integer, Param> {
             Elements divs = body.getElementsByTag("div");
             Elements scripts = body.getElementsByTag("script");
             Elements zucks = body.getElementsByTag("img");
+            Elements iframes = body.getElementsByTag("iframe");
 
             for (Element script : scripts){
                 str = script.html();
@@ -82,7 +83,12 @@ class DownloadTask extends AsyncTask<Param, Integer, Param> {
                 StringOperation stringOperation = new StringOperation();
                 String afterStr = stringOperation.removeAds(str);
                 script.html(afterStr);
-                Log.d("Debug", "afterStr : "+script.html());
+//                Log.d("Debug", "afterStr : "+script.html());
+
+            }
+
+            for (Element iframe : iframes){
+                String str1 = iframe.attr("src");
 
             }
 
@@ -109,13 +115,6 @@ class DownloadTask extends AsyncTask<Param, Integer, Param> {
                 }
             }
 
-            for(Element div : divs){
-                String scriptName = div.attr("script");
-
-                if(scriptName.contains("unthem.com")){
-                    div.remove();
-                }
-            }
 
             for(Element google : googles){
                 String className = google.attr("class");
@@ -132,10 +131,10 @@ class DownloadTask extends AsyncTask<Param, Integer, Param> {
                     link.remove();
                 }
 
-                if(href.contains("/images/bannar")){
+/*                if(href.contains("/images/bannar")){
                     link.remove();
                 }
-
+*/
                 if(href.contains("tapone")){ //tapone広告
                     link.remove();
                 }

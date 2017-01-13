@@ -4,6 +4,13 @@
     tools:context="com.example.koba.graduationthesis4.MainActivity">
 
     <item
+        android:id="@+id/homeButton"
+        android:icon="@drawable/ic_action_phone"
+        android:orderInCategory="100"
+        app:showAsAction="always"
+        android:title="Home"/>
+
+    <item
         android:id="@+id/searchView"
         android:icon="@drawable/ic_action_search"
         android:orderInCategory="100"
@@ -46,4 +53,11 @@
         android:orderInCategory="100"
         android:title="@string/new_tab"
         app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/filter"
+        android:orderInCategory="100"
+        android:title="@string/filter"
+        app:showAsAction="never"/>
+
 </menu>

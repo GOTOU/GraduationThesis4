@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        setTitle(null);
 
 
 
@@ -107,8 +107,13 @@ public class MainActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
 
         switch (item.getItemId()){
+
+            case R.id.homeButton:
+                myWebView.loadUrl("https://www.google.co.jp/");
+                break;
+
             case R.id.action_settings:
-                //設定の処理
+
                 break;
 
             case R.id.reload:
@@ -132,6 +137,11 @@ public class MainActivity extends AppCompatActivity {
             case R.id.new_tab:
 
                 break;
+
+            case R.id.filter:
+                Intent filterSettings = new Intent(MainActivity.this, FilterSettings.class);
+                startActivity(filterSettings);
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -149,6 +159,7 @@ public class MainActivity extends AppCompatActivity {
         return false;
 
     }
+
 
 
 

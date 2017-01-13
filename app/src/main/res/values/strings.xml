@@ -6,4 +6,7 @@
     <string name="page_progress">進む</string>
     <string name="new_tab">新しいタブ</string>
     <string name="reload">更新</string>
+    <string name="filter">フィルタ設定</string>
+    <string name="title_activity_filter_settings">FilterSettings</string>
+
 </resources>

@@ -16,7 +16,7 @@ public class StringOperation {  //jsoupのscriptタグの中身を受け取り�
     String url;
 
     public String removeAds(String str){ //scriptタグの中身のjavascriptの文字列中にあるURLを抽出、広告と思わしきURLの削除もしくはreplace
-
+//        Log.d("Debug", "str : "+str);
         List<String> list = Arrays.asList(
                 "premium.2ch.net",
                 "microad.jp",
@@ -73,21 +73,39 @@ public class StringOperation {  //jsoupのscriptタグの中身を受け取り�
                 "platform.gunosy.com",
                 "stimg.iand2ch.net",
                 "stimgc.iand2ch.net",
-                "blogsys.jp"
+                "blogsys.jp",
+                "assys01.fc2.com"
 
 
         );
 
         String result = str;
+/*
+        String urls = "(";
+
+        for (String url : list) {
+            urls = urls + url + "|";
+        }
+        String url_pattern = urls.substring(0, urls.length()-1);
+        url_pattern += ")";
+
+        final Pattern urlPattern = Pattern.compile(url_pattern, Pattern.CASE_INSENSITIVE);
+        Matcher matcher = urlPattern.matcher(result);
+        result = matcher.replaceAll("hoge");
+
+        String temp = matcher.toString();
+
         for (String item : list) {
             final Pattern urlPattern = Pattern.compile("(http://|https://){1}[\\w\\.\\-/:\\#\\?\\=\\&\\;\\%\\~\\+]+", Pattern.CASE_INSENSITIVE);
             Matcher matcher = urlPattern.matcher(result);
-            result = matcher.replaceAll("");
+            result = matcher.replaceAll("hoge");
+
+            String temp = matcher.toString();
         }
+*/
 
-
- //       Log.d("Debug", "result: "+result);
-        return result;
+        Log.d("Debug", "result: "+result);
+        return str;
     }
 
 }
